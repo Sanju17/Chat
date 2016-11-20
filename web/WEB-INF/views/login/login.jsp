@@ -35,42 +35,50 @@
         <h4>Create a new account.</h4>
         <hr />
         
+        <c:if test="${requestScope.error != null}">
+            <div class="form-group validation-summary-errors text-danger">
+                <ul>
+                    <li>${requestScope.error}</li>
+                </ul>
+            </div>   
+        </c:if>
+        
         <div class="form-group">
             <label class="col-md-2 control-label" for="firstname">First Name: </label>
             <div class="col-md-6">
-                <input class="form-control" name="firstname" type="text" value="" required="required"/>
+                <input class="form-control" name="firstname" type="text" <c:if test="${requestScope.firstname != null}"> value="${requestScope.firstname}" </c:if>  required="required"/>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label class="col-md-2 control-label" for="lastname">Last Name: </label>
-            <div class="col-md-6">
-                <input class="form-control" name="lastname" type="text" value="" required="required"/>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="lastname">Last Name: </label>
+                <div class="col-md-6">
+                    <input class="form-control" name="lastname" type="text" <c:if test="${requestScope.lastname != null}"> value="${requestScope.lastname}" </c:if> required="required"/>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label class="col-md-2 control-label" for="username">User Name: </label>
-            <div class="col-md-6">
-                <input class="form-control" name="username" type="text" value="" required="required"/>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="username">User Name: </label>
+                <div class="col-md-6">
+                    <input class="form-control" name="username" type="text" <c:if test="${requestScope.username != null}"> value="${requestScope.username}" </c:if>  required="required"/>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label class="col-md-2 control-label" for="password">Password </label>
-            <div class="col-md-6">
-                <input class="form-control" name="password" type="password" required="required" />
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="password">Password </label>
+                <div class="col-md-6">
+                    <input class="form-control" name="password" type="password" required="required" />
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label class="col-md-2 control-label" for="confirmPassword">Confirm password</label>
-            <div class="col-md-6">
-                <input class="form-control" name="confirmPassword" type="password" />
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="confirmPassword">Confirm password</label>
+                <div class="col-md-6">
+                    <input class="form-control" name="confirmPassword" type="password" />
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-6">
-                <input type="submit" class="btn btn-default" value="Register" />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-6">
+                    <input type="submit" class="btn btn-default" value="Register" />
+                </div>
             </div>
-        </div>
-    </form>
-</div>
-
+        </form>
+    </div>
+    
 <%@include file="../footer.jsp" %>

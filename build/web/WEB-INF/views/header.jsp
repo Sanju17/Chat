@@ -34,7 +34,7 @@
             .validation-summary-errors ul{
                 list-style: none;
                 margin-top: 8px;
-                color: #ffffff;
+                color: #ff0000;
             }
         </style>
     </head>

@@ -65,12 +65,12 @@ public class LoginController extends Controller{
             String username = req.getParameter("username");
             String password = req.getParameter("password");
             String confirmPassword = req.getParameter("confirmPassword");
-            if(password.equals(confirmPassword)){
+            if(!password.equals(confirmPassword)){
                 req.setAttribute("firstname", firstName);
-                req.setAttribute("lastName", lastName);
+                req.setAttribute("lastname", lastName);
                 req.setAttribute("username", username);
                 req.setAttribute("error", "Password didn't match");
-                
+                req.getRequestDispatcher(CommonConsts.PATH + "login/login.jsp").forward(req, resp);
             }
         }
     }
