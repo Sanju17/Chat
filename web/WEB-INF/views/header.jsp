@@ -20,7 +20,7 @@
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-        <script src="../js/bootstrapValidator.min.js" type="text/javascript"></script>
+
         <title>LFA Chat room</title>
             
         <style>
@@ -46,6 +46,10 @@
             .validation-summary-errors ul{
                 list-style: none;
                 margin-top: 8px;
+            }
+            
+            .margin10px{
+                margin:10px;
             }
         </style>
             
@@ -87,13 +91,6 @@
                 });
                 
                 $("#registration_form").submit(function(){
-                    
-                    error_firstname = false;
-                    error_lastname = false;
-                    error_username = false;
-                    error_password = false;
-                    error_confirm_password = false;
-                    
                     check_firstname();
                     check_lastname();
                     check_username();
@@ -107,17 +104,16 @@
                     }
                 });
                 
-                
                 function check_firstname(){
-                    
+                    error_firstname = false;
                 }
                 
                 function check_lastname(){
-                    
+                    error_lastname = false;
                 }
                 
                 function check_username() {
-                    
+                    error_username = false;
                     var stringLength = $("#username").val().length;
                     
                     if(stringLength < 6 || stringLength > 25){
@@ -129,7 +125,7 @@
                         $("#username_error_message").hide();
                     }
                     
-                    var pattern = new RegExp("/^[a-zA-Z0-9_]+$/");
+                    var pattern = new RegExp("^([A-Za-z]|[0-9]|_)+$");
                     if(pattern.test($("#username").val())){
                         $("#username_error_message").hide();
                     }else {
@@ -140,11 +136,40 @@
                 }
                 
                 function check_password(){
+                    error_password = false;
+                    var stringLength = $("#password").val().length;
                     
+                    if(stringLength < 8){
+                        $("#password_error_message").html("Password must of length 8");
+                        $("#password_error_message").show();
+                        error_password = true;
+                        return;
+                    }else{
+                        $("#password_error_message").hide();
+                    }
+                    
+                    var value = $("#password").val();
+                    if(value === $("#username").val()){
+                        $("#password_error_message").html("Password cannot be same as username");
+                        $("#password_error_message").show();
+                        error_password = true;
+                        return;
+                    }else{
+                        $("#password_error_message").hide();
+                    }
                 }
                 
                 function check_confirm_password(){
-                    
+                    error_confirm_password = false;
+                    var value = $("#confirmPassword").val();
+                    if(value !== $("#password").val()){
+                        $("#confirm_password_error_message").html("Password mismatch.");
+                        $("#confirm_password_error_message").show();
+                        error_confirm_password = true;
+                        return;
+                    }else{
+                        $("#confirm_password_error_message").hide();
+                    }
                 }
             });
         </script>

@@ -17,5 +17,6 @@ public interface UserDAO {
     List<User> getAll() throws ClassNotFoundException, SQLException;
     User getUserById(int id) throws ClassNotFoundException, SQLException;
     User getUserByUsername(String username, String password) throws ClassNotFoundException, SQLException;
+    boolean isUserAvailabile(String username) throws ClassNotFoundException, SQLException;
     int insert(User u) throws ClassNotFoundException, SQLException;
 }

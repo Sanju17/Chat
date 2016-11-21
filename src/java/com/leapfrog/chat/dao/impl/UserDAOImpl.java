@@ -114,5 +114,31 @@ public class UserDAOImpl implements UserDAO{
         dbConnection.close();
         return user;
     }
+
+    //if no user false
+    @Override
+    public boolean isUserAvailabile(String username) throws ClassNotFoundException, SQLException {
+         dbConnection.open();
+        String sql = "SELECT * FROM user WHERE username = ?";
+        
+        PreparedStatement stmt = dbConnection.initStatement(sql);
+        stmt.setString(1, username);
+        
+        ResultSet rs = dbConnection.executeQuery();
+        
+        User user = null;
+        while(rs.next()){
+           user = new User();
+           user.setId(rs.getInt("user_id"));
+           user.setFirstName(rs.getString("firstname"));
+           user.setLastName(rs.getString("last_name"));
+           user.setUsername(rs.getString("username"));
+           user.setPassword(rs.getString("password"));
+           user.setIsActive(rs.getBoolean("status"));
+           user.setIsAdmin(rs.getBoolean("is_Admin"));
+        }
+        dbConnection.close();
+        return user == null;
+    }
     
 }

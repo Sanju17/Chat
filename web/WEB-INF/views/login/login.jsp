@@ -34,14 +34,6 @@
         <div class="panel-body">
             <form class="form-horizontal" id="registration_form"  method="post">
                 <input name="type" type="hidden" value="register" />                    
-                <c:if test="${requestScope.error != null}">
-                    <div class="form-group validation-summary-errors text-danger">
-                        <ul>
-                            <li>${requestScope.error}</li>
-                        </ul>
-                    </div>   
-                </c:if>
-                
                 <div class="form-group">
                     <label class="col-md-2 control-label" for="firstname">First Name: </label>
                     <div class="col-md-6">
@@ -60,6 +52,11 @@
                         <label class="col-md-2 control-label" for="username">User Name: </label>
                         <div class="col-md-6">
                             <input class="form-control" id="username" name="username" type="text" <c:if test="${requestScope.username != null}"> value="${requestScope.username}" </c:if>  required="required"/>
+                            <span class="validation-summary-errors">
+                                    <c:if test="${requestScope.error != null}">
+                                         ${requestScope.error}
+                                    </c:if>
+                            </span>
                             <span class="validation-summary-errors" id="username_error_message"></span>
                         </div>
                     </div>
