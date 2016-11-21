@@ -13,6 +13,7 @@ import java.net.Socket;
  */
 public class Client {
     private int userID;
+    private String userName;
     private Socket socket;
 
     public Client() {
@@ -30,7 +31,15 @@ public class Client {
     public void setUserID(int userID) {
         this.userID = userID;
     }
+    
+    public String getUserName() {
+        return userName;
+    }
 
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+    
     public Socket getSocket() {
         return socket;
     }

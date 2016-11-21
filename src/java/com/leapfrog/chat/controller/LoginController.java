@@ -51,6 +51,7 @@ public class LoginController extends Controller{
                 user = userDao.getUserByUsername(username, password);
                 if(user != null && user.getFirstName() != null){
                     HttpSession session = req.getSession(true);
+                    session.setAttribute("userid", user.getId());
                     session.setAttribute("firstname", user.getFirstName());
                     session.setAttribute("lastname", user.getLastName());
                     session.setAttribute("username", user.getUsername());

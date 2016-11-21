@@ -20,7 +20,7 @@
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" type="text/javascript"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
+            
         <title>LFA Chat room</title>
             
         <style>
@@ -47,9 +47,13 @@
                 list-style: none;
                 margin-top: 8px;
             }
-            
+                
             .margin10px{
                 margin:10px;
+            }
+                
+            .form {
+                margin-top: 60px;
             }
         </style>
             
@@ -62,7 +66,7 @@
                 $("#username_error_message").hide();
                 $("#password_error_message").hide();
                 $("#confirm_password_error_message").hide();
-                    
+                $("#create_port_error").hide();
                 
                 var error_firstname = false;
                 var error_lastname = false;
@@ -101,6 +105,18 @@
                         return true;
                     }else {
                         return false;
+                    }
+                });
+                
+                $("#port_creation_form").submit(function (){
+                    var stringLength = $("#port_num").val().length;
+                    if(stringLength != 4){
+                        $("#create_port_error").html("Port number should be of 4 digits.");
+                        $("#create_port_error").show();
+                        return false;
+                    }else{
+                        $("#create_port_error").hide();
+                        return true;    
                     }
                 });
                 

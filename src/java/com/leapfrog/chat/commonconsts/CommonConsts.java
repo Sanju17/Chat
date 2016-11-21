@@ -12,5 +12,7 @@ package com.leapfrog.chat.commonconsts;
 public class CommonConsts {
     
     public static final String PATH = "/WEB-INF/views/"; 
+    public static final int LIST_FEATURE = 1;
+    public static final int PM_FEATURE = 2;
     
 }
