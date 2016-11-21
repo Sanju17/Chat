@@ -46,36 +46,40 @@
                     <label class="col-md-2 control-label" for="firstname">First Name: </label>
                     <div class="col-md-6">
                         <input class="form-control" id="firstname" name="firstname" type="text" <c:if test="${requestScope.firstname != null}"> value="${requestScope.firstname}" </c:if>  required="required"/>
+                        <span class="validation-summary-errors" id="firstname_error_message"></span>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="lastname">Last Name: </label>
                         <div class="col-md-6">
                             <input class="form-control" id="lastname" name="lastname" type="text" <c:if test="${requestScope.lastname != null}"> value="${requestScope.lastname}" </c:if> required="required"/>
+                            <span class="validation-summary-errors" id="lastname_error_message"></span>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="username">User Name: </label>
                         <div class="col-md-6">
                             <input class="form-control" id="username" name="username" type="text" <c:if test="${requestScope.username != null}"> value="${requestScope.username}" </c:if>  required="required"/>
-                            <span class="validation-summary-errors" id="username_error_message">asd</span>
+                            <span class="validation-summary-errors" id="username_error_message"></span>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="password">Password </label>
                         <div class="col-md-6">
                             <input class="form-control" id="password" name="password" type="password" required="required" />
+                            <span class="validation-summary-errors" id="password_error_message"></span>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-md-2 control-label" for="confirmPassword">Confirm password</label>
                         <div class="col-md-6">
                             <input class="form-control" id="confirmPassword" name="confirmPassword" type="password" />
+                            <span class="validation-summary-errors" id="confirm_password_error_message"></span>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-6">
-                            <input type="submit" class="btn btn-success" value="Register" />
+                            <input type="submit" name="register" class="btn btn-success" value="Register" />
                         </div>
                     </div>
                 </form>
