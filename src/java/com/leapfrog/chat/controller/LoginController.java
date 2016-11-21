@@ -30,7 +30,12 @@ public class LoginController extends Controller{
     
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher(CommonConsts.PATH + "login/login.jsp").forward(req, resp);
+        HttpSession session = req.getSession(false);
+        if(session != null  && session.getAttribute("username") != null){
+            resp.sendRedirect(req.getContextPath() + "/profile");
+        }else {
+            req.getRequestDispatcher(CommonConsts.PATH + "login/login.jsp").forward(req, resp);
+        }
     }
     
     @Override
